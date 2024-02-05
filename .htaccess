@@ -1,0 +1,51 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php8_module>
+   php_flag display_errors On
+   php_value max_execution_time 3600
+   php_value max_input_time 3600
+   php_value max_input_vars 100000
+   php_value memory_limit 10240M
+   php_value post_max_size 10240M
+   php_value session.gc_maxlifetime 14400
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php82"
+   php_value upload_max_filesize 512M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors On
+   php_value max_execution_time 3600
+   php_value max_input_time 3600
+   php_value max_input_vars 100000
+   php_value memory_limit 10240M
+   php_value post_max_size 10240M
+   php_value session.gc_maxlifetime 14400
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php82"
+   php_value upload_max_filesize 512M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
